@@ -1,0 +1,42 @@
+Finding the smallest number of nodes that must be added to make a binary tree balanced?
+
+Suppose that you are given an arbitrary binary tree. We'll call the tree balanced if the following is true for all nodes:
+
+1. That node is a leaf, or
+2. The height of the left subtree and the height of the right subtree differ by at most ±1 and the left and right subtrees are themselves balanced.
+
+Answer : 
+First let's find the height of left child and right child of each node.
+
+Now consider the root of the tree it's height is
+
+1+max(height(root.left) , height(root.right)).
+let's assume left has height of n-1 then right should have minimum height of n-2. Let's define another relation here req[node] -> the minimum required height of each node to make the tree balanced.
+
+if you observe for a node to be at height h one of it's children should be at least at n-1 and to make it balanced the other children should be at at least n-2.
+
+start from root with req[root] = height of root
+
+The pseudo code is :
+
+    def chk_nodes(root, req):
+
+      if(root == NULL):
+        return minNodes(req)
+
+      if(left[root] > right[root]):
+       return chk_nodes(root.left  , req-1) + chk_nodes(root.right , req-2)
+
+      else return chk_nodes(root.left , req-2) + chk_nodes(root.right , req-1)
+Now what is minNodes(int req)?
+
+It's a function which return 'minimum no of nodes required to create a balanced binary tree of height h'. the function is quite intuitive and self-explanatory.
+
+      def minNodes(int req) :
+          if req < 0 : return 0
+          return 1 + minNodes(req-1) + minNodes(req-2)
+In minNodes function , a lookup table can be used to make it O(1) lookup time and O(N) for construction.
+
+when the chk_nodes function runs recursively , at leaf-nodes we will be left with left-node , req . if that req > 0 then there should be a new sub-tree (balanced) with height req. Hence minNodes( req ) are required at this particular leaf-node.
+
+With only 2 traversals and O(N) time, O(N) space the problem is solved.
