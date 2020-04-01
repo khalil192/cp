@@ -1,7 +1,7 @@
 /*
 mainly in competitve programming if there is a Combinatorics problem..
 we often needed to use Ncr which is N! / (N-r)! * r!
-but Ncr may overflow.. hence we are asked for the ans % large_prime_number
+but Ncr may overflow.. hence we will be asked for the ans % large_prime_number
 in this code the function ncrMod gives the answer.. for Ncr mod prime_number
 
 ncrModP = (n!/ ((n-r)! (r)!))%p
