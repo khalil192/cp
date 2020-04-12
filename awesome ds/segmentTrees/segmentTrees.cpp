@@ -8,8 +8,10 @@ using namespace std;
 //simply changing 2 lines the segment tree can be manipulated into ...
 // sum , product , range min , range max .
 
-class segmentTree{
 
+
+
+class segmentTree{
     public :
         vector<int> segTree;
         int n;
