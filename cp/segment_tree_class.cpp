@@ -1,3 +1,18 @@
+/*
+
+    this code is written for competitve programming purposes. so the code quality and readability is compromised for easy use and quick modifications
+
+    code for segment tree class with point-based updates and range based queries
+
+    the func in the segmentTree class controls the segment tree.
+    simply changing 2 lines the segment tree can be manipulated into ...
+    sum , product , range min , range max .
+
+*/
+
+
+
+
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
@@ -32,9 +47,6 @@ using namespace std;
 lli mod = 1e9 +7,test; 
 
 
-// the func in the segmentTree class controls the segment tree.
-//simply changing 2 lines the segment tree can be manipulated into ...
-// sum , product , range min , range max .
 
 
 
