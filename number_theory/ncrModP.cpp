@@ -24,15 +24,18 @@ a^-1 ≡ a^p-2 (mod p)
 using namespace std;
 #define MAXI 10001
 lli mod = 1e9 +7; //sample prime considered here is 10^9 +7; 
-lli fact[MAXI],n;
+
+
+lli fact[100001],n;
 
 
 void find_facts(lli n){
     fact[0] =1;
-    for(lli i=0;i<n;i++){
+    for(lli i=1;i<n;i++){
         fact[i] = ((fact[i-1] * i))%mod; 
     }
 }
+
 lli pow_modP(lli x,lli expo,lli prime){
     // returns pow(x,expo) .. x^expo (mod prime)
     lli res =1;
@@ -50,9 +53,10 @@ lli mod_inverse(lli x,lli prime){
     return pow_modP(x,prime-2,prime);
 }
 lli ncrModP(lli n,lli r,lli prime){
+     if(n < r){return 0;}
     if(r==0){return 1;}
-    return (((fact[n] * mod_inverse(r,prime) )% prime ) * 
-        mod_inverse(n-r,prime) %prime);
+    return (((fact[n] * mod_inverse(fact[r],prime) )% prime ) * 
+        mod_inverse(fact[n-r],prime) %prime);
 }
 
 int main(){ 
